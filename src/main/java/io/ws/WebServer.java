@@ -1,6 +1,6 @@
 package io.ws;
 
-import static io.ws.Config.BASE_URI;
+import static io.ws.Imports.BASE_URI;
 
 import org.glassfish.grizzly.http.server.HttpServer;
 import org.glassfish.jersey.grizzly2.httpserver.GrizzlyHttpServerFactory;

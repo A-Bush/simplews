@@ -1,6 +1,6 @@
 package io.ws;
 
-import static io.ws.Config.UPLOAD_FOLDER;
+import static io.ws.Imports.*;
 
 import java.io.*;
 import javax.ws.rs.*;
@@ -11,7 +11,7 @@ import javax.ws.rs.core.UriInfo;
 import org.glassfish.jersey.media.multipart.FormDataContentDisposition;
 import org.glassfish.jersey.media.multipart.FormDataParam;
 
-@Path(Config.UPLOAD)
+@Path(Imports.UPLOAD)
 public class FileUploadService {
 
     public FileUploadService() {}
@@ -27,28 +27,28 @@ public class FileUploadService {
     @POST
     @Consumes(MediaType.MULTIPART_FORM_DATA)
     public Response uploadFile(
-            @FormDataParam("file") InputStream uploadedInputStream,
-            @FormDataParam("file") FormDataContentDisposition fileDetail) {
+            @FormDataParam(FILE) InputStream uploadedInputStream,
+            @FormDataParam(FILE) FormDataContentDisposition fileDetail) {
 
         // check if all form parameters are provided
         if (uploadedInputStream == null || fileDetail == null)
-            return Response.status(400).entity("Invalid form data").build();
+            return Response.status(400).entity(INVALID_FORM_DATA).build();
 
         // create our destination folder, if it not exists
         try {
             createFolderIfNotExists(UPLOAD_FOLDER);
         } catch (SecurityException se) {
-            return Response.status(500).entity("Can not create destination folder on server").build();
+            return Response.status(500).entity(CAN_NOT_CREATE_DESTINATION_FOLDER_ON_SERVER).build();
         }
 
         String uploadedFileLocation = UPLOAD_FOLDER + fileDetail.getFileName();
         try {
             saveToFile(uploadedInputStream, uploadedFileLocation);
         } catch (IOException e) {
-            return Response.status(500).entity("Can not save file").build();
+            return Response.status(500).entity(CAN_NOT_SAVE_FILE).build();
         }
 
-        return Response.status(200).entity("File saved to " + uploadedFileLocation).build();
+        return Response.status(200).entity(FILE_SAVED_TO + uploadedFileLocation).build();
     }
 
     /**

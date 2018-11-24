@@ -11,7 +11,7 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
-@Path(Config.IMAGES)
+@Path(Imports.IMAGES)
 public class FileDownloadService {
     // array of supported extensions
     static final String[] EXTENSIONS = new String[]{"jpg", "jpeg", "gif", "png", "bmp"};
@@ -35,7 +35,7 @@ public class FileDownloadService {
     public Response getFolderImages(@QueryParam("lastknown") String lastknown) {
         //Gets the contents of the folder (reverse order : more recent first)
         //see http://stackoverflow.com/questions/11300847/load-and-display-all-the-images-from-a-folder
-        File dir = new File(Config.UPLOAD_FOLDER);
+        File dir = new File(Imports.UPLOAD_FOLDER);
         File[] files = dir.listFiles(IMAGE_FILTER);
         assert files != null;
         Arrays.sort(files, new Comparator<File>() {
@@ -58,7 +58,7 @@ public class FileDownloadService {
     @Path("/{image}")
     @Produces("image/*")
     public Response getImage(@PathParam("image") String image) {
-        File f = new File(Config.UPLOAD_FOLDER + image);
+        File f = new File(Imports.UPLOAD_FOLDER + image);
         if (!f.exists()) {
             throw new WebApplicationException(404);
         }

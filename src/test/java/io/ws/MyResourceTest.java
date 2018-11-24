@@ -29,7 +29,7 @@ public class MyResourceTest {
         // --
         // c.configuration().enable(new org.glassfish.jersey.media.json.JsonJaxbFeature());
 
-        target = c.target(Config.BASE_URI);
+        target = c.target(Imports.BASE_URI);
     }
 
     @After

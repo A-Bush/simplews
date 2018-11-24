@@ -1,7 +1,7 @@
 package io.ws;
 
-import static io.ws.Config.FILES_HTML;
-import static io.ws.Config.UPLOAD_HTML;
+import static io.ws.Imports.FILES_HTML;
+import static io.ws.Imports.UPLOAD_HTML;
 
 import java.io.*;
 import java.util.Objects;
@@ -13,7 +13,7 @@ import javax.ws.rs.core.MediaType;
 /**
  * Root resource (exposed at "res" path)
  */
-@Path(Config.ROOT)
+@Path(Imports.ROOT)
 public class Index {
 
     @GET
@@ -30,7 +30,7 @@ public class Index {
     }
 
     @GET
-    @Path(Config.FILES)
+    @Path(Imports.FILES)
     @Produces(MediaType.TEXT_HTML)
     public InputStream getData() {
         ClassLoader classLoader = getClass().getClassLoader();

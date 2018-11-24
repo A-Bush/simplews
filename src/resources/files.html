@@ -12,11 +12,11 @@
     var lastknown = "";
 
     function doPoll() {
-        $.get('data/images?lastknown=' + lastknown, function (data) {
+        $.get('images?lastknown=' + lastknown, function (data) {
             total++;
             $("#info1").html("<pre>Total: " + total + "<br>New files: " + data + "</pre>");
             for (var i = data.length - 1; i >= 0; i--) {
-                $("#gallery1").prepend("<img src=\"data/images/" + data[i] + "\" style=\"width:200px;height:200px\" />");
+                $("#gallery1").prepend("<img src=\"images/" + data[i] + "\" style=\"width:200px;height:200px\" />");
                 lastknown = data[i];
             }
             setTimeout(doPoll, 5000);
