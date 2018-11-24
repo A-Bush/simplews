@@ -10,7 +10,7 @@ import org.glassfish.jersey.server.ResourceConfig;
 import java.io.IOException;
 import java.net.URI;
 
-public class Main {
+public class WebServer {
     /**
      * Starts Grizzly HTTP server exposing JAX-RS resources defined in this application.
      * @return Grizzly HTTP server.
@@ -26,7 +26,7 @@ public class Main {
     }
 
     /**
-     * Main method.
+     * WebServer method.
      * @param args
      * @throws IOException
      */

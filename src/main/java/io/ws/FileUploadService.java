@@ -11,18 +11,8 @@ import javax.ws.rs.core.UriInfo;
 import org.glassfish.jersey.media.multipart.FormDataContentDisposition;
 import org.glassfish.jersey.media.multipart.FormDataParam;
 
-/**
- * This example shows how to build Java REST web-service to upload files
- * accepting POST requests with encryption type "multipart/form-data".
- * For more details please read the full tutorial
- * on https://javatutorial.net/java-file-upload-rest-service
- * @author javatutorial.net
- */
 @Path(Config.UPLOAD)
 public class FileUploadService {
-
-    /** The path to the folder where we want to store the uploaded files */
-
 
     public FileUploadService() {}
 
