@@ -3,8 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+        ul#menu li {
+            display: inline;
+        }
+    </style>
 </head>
 <body>
+<ul id="menu">
+    <li><a href="/">UPLOAD</a></li>
+    <li><a href="/files">FILES</a></li>
+</ul>
 Choose file to upload<br>
 <form action="http://localhost:8080/upload" method="post" enctype="multipart/form-data">
     <input name="file" id="filename" type="file" /><br><br>
